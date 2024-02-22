@@ -79,8 +79,14 @@ For truly large-scale data, we might need to aggregate or sample the data before
 
 ## The Pipeline
 
-### Function
+### Primary Functionality
 Pre-processing Data(XML) to Pandas DataFrame -> Data Processing with Apache Spark -> Visualisation with Matplotlib/Plotly -> Interactive Display with Streamlit or Dash
+
+### Secondary Functionality
+Unit Testing with Pytest -> Integration Testing with Pytest -> Documentation with Sphinx -> Dockerise with Docker -> Deploy to Cloud with AWS/GCP/Azure
+
+### Tertiary Functionality (Unconfirmed/Potential)
+API for Querying Data -> Monitoring HTTP requests with Prometheus -> Alerting  and Logging with Grafana -> Store Long-Term Logs in S3 (should be cheap unless we need to access them frequently???)
 
 # Intuition
 
@@ -128,8 +134,8 @@ Therefore, I will be using **matplotlib** for the initial visualisation, and the
 
 7. **Alerts and Notifications**: If there are certain conditions that the engineers are particularly interested in (like a parking lot being full), we could include a system of alerts or notifications.
 
-It would be a good idea to involve the engineers in the design process to ensure that the dashboard meets their needs. They may have specific requirements for the types of data they want to see, the way they want to interact with the data, and the way they want the data to be visualized.
+It would be a good idea to involve the engineers in the design process to ensure that the dashboard meets their needs. I primarily want to reduce scope creep. They may have specific requirements for the types of data they want to see, the way they want to interact with the data, as well as the way they want the data to be visualized.
 
 # Dependencies
 
-Python 3.8, pipenv, matplotlib, pandas, numpy, xml.etree.ElementTree, apache spark, pytest, requests, flask, dash, streamlit, plotly
+Python 3.8, matplotlib, pandas, numpy, xml.etree.ElementTree, apache spark, pytest, requests, flask, dash, streamlit, plotly
