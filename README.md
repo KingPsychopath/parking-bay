@@ -92,7 +92,7 @@ API for Querying Data -> Monitoring HTTP requests with Prometheus -> Alerting  a
 
 I need to decide on the best way to visualise the data, preferably in a way similar to what will be relevant for the senior engineers to read and understand, after HD Map data ingest.
 
-Currently, looking at open-source libraries to lighten the load on the project and focus on the core functionality. Requirements are easy of use and the ability to handle large data-sets at scale.
+Currently, looking at open-source libraries to lighten the load on the project and focus on the core functionality. Requirements are ease of use and the ability to handle large data-sets at scale.
 
 ## Options
 
