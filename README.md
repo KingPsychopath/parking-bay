@@ -138,4 +138,4 @@ It would be a good idea to involve the engineers in the design process to ensure
 
 # Dependencies
 
-Python 3.8, matplotlib, pandas, numpy, xml.etree.ElementTree, apache spark, pytest, requests, flask, dash, streamlit, plotly
+Python 3.8 (minimum), matplotlib, pandas, numpy, xml.etree.ElementTree, apache spark, pytest, requests, flask, dash, streamlit, plotly
