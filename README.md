@@ -110,7 +110,7 @@ Not sure if we will be working with Jupyter Notebooks, so foregoing **Voila** an
 
 **Streamlit** is good for basic dashboards that have a few users. It is NOT a replacement for a real web framework, and it isn't even close and it appears Parkopedia has a preference for flexibility with in-house builds. (It's not even a web framework, it's a data app framework.)
 
-Foregone, I will be using **matplotlib** for the initial visualisation, and then move on to **Streamlit or Dash** for the interactive usage.
+Therefore, I will be using **matplotlib** for the initial visualisation, and then move on to **Streamlit or Dash+Plotly** for the interactive usage.
 
 ## Proposed Functionality
 
