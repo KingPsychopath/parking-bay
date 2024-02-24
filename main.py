@@ -13,10 +13,23 @@ def main() -> None:
     The entry point for the program.
     """
     data_frame: object = tpx.parse_xml("./data/parking_bay_data.xml")
+    data_frame = tpd.drop_columns(
+        data_frame,
+        [
+            "disclaimer",
+            "epsg_27700_well_known_text_geometry",
+            "epsg_4326_well_known_text_geometry",
+            "epsg_27700_geojson_geometry",
+            "epsg_4326_geojson_geometry",
+            "spatial_accuracy",
+            "last_uploaded",
+            "location",
+            "organisation_uri",
+        ],
+    )
     total_rows: int = len(data_frame)
     print(f"Total Rows: {total_rows}")
-
-    tpd.print_rows(data_frame, 0, 5)
+    print(data_frame.columns.tolist())
 
 
 if __name__ == "__main__":

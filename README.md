@@ -39,32 +39,50 @@ The data schema is as follows:
     'last_uploaded'
 ```
 
+I plan to load the data and parse it into a Pandas DataFrame for further processing. The data is relatively small, so I can load it all into memory at once. However, if the data were larger, I would need to use a distributed data processing framework like Apache Spark to handle it.
+
+I will also need to consider how to handle missing or invalid data. For example, if a parking lot has no occupancy data, I might want to fill in the missing values with a default value, or I might want to exclude the parking lot from the visualisation entirely.
+
+I have dropped the following columns from the data due to irrelevance to the visualisation.
+
+```xml
+            "disclaimer",
+            "epsg:27700_well_known_text_geometry",
+            "epsg:4326_well_known_text_geometry",
+            "epsg:27700_geojson_geometry",
+            "epsg:4326_geojson_geometry",
+            "spatial_accuracy",
+            "last_uploaded",
+            "location",
+            "organisation_uri",
+```
+
 # Objectives
 
 <table>
 <tr>
 <td>
 
-- [x] Ingest & Parse XML Data to DataFrames
-- [ ] Visualise Data (Human Readable Visualisation)
-- [ ] Create Widgets for Interactive Usage (i.e. Slider for Time)
-- [ ] Storing the Data?
+-   [x] Ingest & Parse XML Data to DataFrames
+-   [ ] Visualise Data (Human Readable Visualisation)
+-   [ ] Create Widgets for Interactive Usage (i.e. Slider for Time)
+-   [ ] Storing the Data?
 
 </td>
 <td>
 
-- [ ] Unit Tests
-- [ ] Integration Tests
-- [ ] Documentation
+-   [ ] Unit Tests
+-   [ ] Integration Tests
+-   [ ] Documentation
 
 </td>
 <td>
 
-- [ ] Dockerise
-- [ ] Deploy to Cloud
-- [ ] Monitoring
-- [ ] Alerting
-- [ ] Logging
+-   [ ] Dockerise
+-   [ ] Deploy to Cloud
+-   [ ] Monitoring
+-   [ ] Alerting
+-   [ ] Logging
 
 </td>
 </tr>
@@ -80,13 +98,16 @@ For truly large-scale data, we might need to aggregate or sample the data before
 ## The Pipeline
 
 ### Primary Functionality
+
 Pre-processing Data(XML) to Pandas DataFrame -> Data Processing with Apache Spark -> Visualisation with Matplotlib/Plotly -> Interactive Display with Streamlit or Dash
 
 ### Secondary Functionality
+
 Unit Testing with Pytest -> Integration Testing with Pytest -> Documentation with Sphinx -> Dockerise with Docker -> Deploy to Cloud with AWS/GCP/Azure
 
 ### Tertiary Functionality (Unconfirmed/Potential)
-API for Querying Data -> Monitoring HTTP requests with Prometheus -> Alerting  and Logging with Grafana -> Store Long-Term Logs in S3 (should be cheap unless we need to access them frequently???)
+
+API for Querying Data -> Monitoring HTTP requests with Prometheus -> Alerting and Logging with Grafana -> Store Long-Term Logs in S3 (should be cheap unless we need to access them frequently???)
 
 # Intuition
 

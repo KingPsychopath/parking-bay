@@ -23,3 +23,18 @@ def print_rows(dataframe: pd.DataFrame, start: int, end: Optional[int] = None):
         print(dataframe.iloc[start])
     else:  # If an end row is specified, print all rows from start to end-1
         print(dataframe.iloc[start:end])
+
+
+def drop_columns(df: pd.DataFrame, columns: list) -> pd.DataFrame:
+    """
+    Drops the specified columns from the given DataFrame.
+
+    Args:
+        df (pd.DataFrame): The DataFrame from which columns need to be dropped.
+        columns (list): A list of column names to be dropped.
+
+    Returns:
+        pd.DataFrame: The DataFrame with the specified columns dropped.
+    """
+    df = df.drop(columns, axis=1)
+    return df
