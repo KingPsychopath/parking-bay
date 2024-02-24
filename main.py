@@ -7,7 +7,7 @@
 import pandas as pd
 
 # import utils.test_process_xml as xml_processor
-from utils import test_process_xml as tpx
+from utils import process_xml as tpx
 
 
 def main() -> None:
@@ -18,7 +18,7 @@ def main() -> None:
     df = pd.DataFrame(data)
 
     total_bays = len(df)
-    print(df.info())
+    # print(df.info())
 
     print(f"Total parking bays: {total_bays}")
     tpx.print_rows("./data/parking_bay_data.xml", 0, 5)
@@ -28,3 +28,5 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+else:
+    print("Please do not import this module. Run it directly.")
