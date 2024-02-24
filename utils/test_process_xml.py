@@ -1,7 +1,16 @@
+"""
+This is the docstring for the module. This module does XYZ.
+
+Functions:
+    func1() -- does this
+    func2() -- does that
+"""
+
 import xml.etree.ElementTree as ET
 import pandas as pd
 
-# Currently testing ingress of data from XML file and determining shape of data before building application
+# Currently testing ingress of data from XML file
+# and determining shape of data before building application
 
 
 def parse_xml_to_list(xml_file):
@@ -12,8 +21,10 @@ def parse_xml_to_list(xml_file):
     xml_file (str): The path to the XML file.
 
     Returns:
-    list: A list of dictionaries, where each dictionary represents an element in the XML file.
-        The keys of the dictionaries are the XML element tags, and the values are the corresponding text content.
+    list: A list of dictionaries,
+    where each dictionary represents an element in the XML file.
+        The keys of the dictionaries are the XML element tags,
+        and the values are the corresponding text content.
     """
     tree = ET.parse(xml_file)
     root = tree.getroot()
@@ -92,7 +103,8 @@ def print_rows(xml_file, start, end=None):
     Parameters:
     xml_file (str): The path to the XML file.
     start (int): The index of the start row to print.
-    end (int, optional): The index of the end row to print. If not specified, only the start row is printed.
+    end (int, optional): The index of the end row to print.
+    If not specified, only the start row is printed.
 
     Returns:
     None
@@ -102,14 +114,3 @@ def print_rows(xml_file, start, end=None):
         print(df.iloc[start])
     else:  # If an end row is specified, print all rows from start to end-1
         print(df.iloc[start:end])
-
-
-data = parse_xml_to_list("./res/Parking Bay Data.xml")
-df = pd.DataFrame(data)
-
-total_bays = len(df)
-print(df.info())
-
-print(f"Total parking bays: {total_bays}")
-print_rows("./res/Parking Bay Data.xml", 0, 5)
-# average_occupancy = df['parking_bay_length_metres'].mean()  # Replace 'occupancy' with your actual column name
