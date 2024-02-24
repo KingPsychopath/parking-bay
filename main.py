@@ -4,26 +4,19 @@
 
 """
 
-import pandas as pd
-
 # import utils.test_process_xml as xml_processor
-from utils import process_xml as tpx
+from utils import parse_xml as tpx, process_df as tpd
 
 
 def main() -> None:
     """
     The entry point for the program.
     """
-    data = tpx.parse_xml_to_list("./data/parking_bay_data.xml")
-    df = pd.DataFrame(data)
+    data_frame: object = tpx.parse_xml("./data/parking_bay_data.xml")
+    total_rows: int = len(data_frame)
+    print(f"Total Rows: {total_rows}")
 
-    total_bays = len(df)
-    # print(df.info())
-
-    print(f"Total parking bays: {total_bays}")
-    tpx.print_rows("./data/parking_bay_data.xml", 0, 5)
-    # average_occupancy = df['parking_bay_length_metres'].mean()
-    # Replace 'occupancy' with your actual column name
+    tpd.print_rows(data_frame, 0, 5)
 
 
 if __name__ == "__main__":
