@@ -1,7 +1,8 @@
 # parking-bay
 
-![alt text](assets/README/DataViz_Pipeline.png)
 A Parking Bay Data Visualiser that in-takes ingress XML data for Human Readable Visualisation, built in Python with re-usable components alongside a focus on scalability and maintainability via distributed data-processing using Apache Spark.
+
+![alt text](assets/README/DataViz_Pipeline.png)
 
 Here is a simple visualisation of the data-set in a web-app using Dash and Flask, with the data being visualised in a table.
 In the future, I plan to add more visualisations and interactive widgets to the web-app.
