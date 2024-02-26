@@ -13,7 +13,7 @@ def get_normalised_data_set() -> pd.DataFrame:
     Get the Data Set from the XML file and
     return the DataFrame after dropping columns.
     """
-    data_frame: pd.DataFrame = tpx.parse_xml("./data/parking_bay_data.xml")
+    data_frame: pd.DataFrame = tpx.parse_xml("../data/parking_bay_data.xml")
     data_frame = tpd.drop_columns(
         data_frame,
         [
