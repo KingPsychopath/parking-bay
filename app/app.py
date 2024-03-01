@@ -4,21 +4,23 @@ Main application and routing logic
 
 import sys
 from pathlib import Path
+
 # Use this to import from the parent directory
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-
+from flask import Flask, g
 from dash import Dash, html, dcc, callback, Output, Input, dash_table
 import plotly.express as px
 import pandas as pd
 
 from utils import dropping_tables
 
-df = pd.read_csv(
-    "https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv"
-)
+# df = pd.read_csv(
+#    "https://raw.githubusercontent.com/plotly/datasets/master/gapminderDataFiveYear.csv"
+# )
 
-df2 = dropping_tables.get_normalised_data_set()
+df = dropping_tables.get_normalised_data_set()
+
 
 server = Flask(__name__)  # create a new Flask instance
 app = Dash(
@@ -30,7 +32,55 @@ app = Dash(
 app.layout = html.Div(
     [
         html.Div(children="My First App with Data"),
-        dash_table.DataTable(data=df2.to_dict("records"), page_size=10),
+        dash_table.DataTable(data=df.to_dict("records"), page_size=10),
+    ]
+)
+
+# Assuming df is your DataFrame and it has columns 'postcode' and 'parking_bays'
+df["postcode"] = (
+    df["postcode"].str.split().str[0]
+)  # Split the postcode and take the first part
+
+# Filter out the postcodes not in your list
+postcodes = [
+    "N1",
+    "N6",
+    "N7",
+    "N19",
+    "NW1",
+    "NW2",
+    "NW3",
+    "NW5",
+    "NW6",
+    "NW8",
+    "EC1",
+    "WC1",
+    "WC2",
+    "W1",
+    "W9",
+]
+df = df[df["postcode"].isin(postcodes)]
+
+# Sum the number of parking bays for each postcode
+result = df.groupby("postcode")["parking_spaces"].sum().reset_index()
+
+
+app.layout = html.Div(
+    [
+        dcc.Graph(
+            id="postcode-chart",
+            figure={
+                "data": [
+                    {
+                        "x": result["postcode"],
+                        "y": result["parking_spaces"],
+                        "type": "bar",
+                        "name": "Parking Bays",
+                    },
+                ],
+                "layout": {"title": "Parking Bays by Postcode"},
+            },
+        )
     ]
 )
 
@@ -44,7 +94,7 @@ def index():
     Returns:
         str: The homepage content.
     """
-    return "Hello, this is the homepage!"
+    return layout
 
 
 @server.route("/dashboard")
